@@ -1,0 +1,10 @@
+* key activating :  copy and paste ssh code, open the terminal in the directory of contains pem file
+* create directory :  mkdir directory_name
+* activate env : soruce directory/bin/activate
+* open folder : cd directory_name , change directory
+* delete directory : rm -rf directory_name
+* git pull : git pull origin branch_name
+* git clone : git clone https_git_address
+* install requirement files : pip install -r requirement.txt
+* open a project : nano file_name
+

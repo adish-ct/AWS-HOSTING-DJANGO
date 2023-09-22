@@ -1,0 +1,163 @@
+HOSTING PROCEDURE 
+
+CREATE INSTANCE IN AWS
+
+Copy the key from AWS and open terminal in .pem file directory
+
+* Run with the key
+*	sudo apt update
+	sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
+
+* Connect with database : 	sudo -u postgres psql
+
+* Create Database 	:  	CREATE DATABASE myproject;
+
+* Create User 		: 	CREATE USER myprojectuser WITH PASSWORD 'password';
+
+* Provide previleges  	: 	GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+
+* Quit Database		: 	\q
+
+* Update PIP		:	sudo -H pip3 install --upgrade pip
+
+* Install Virtual env	:	sudo -H pip3 install virtualenv
+
+* Create a directory	:	mkdir ~/myprojectdir
+
+* Change directory	:	cd ~/myprojectdir
+
+* Create Virtual env	:	virtualenv myprojectenv
+
+* Activate Virtual env	:	source myprojectenv/bin/activate
+
+* Install psychopg	:	pip install django gunicorn psycopg2-binary
+
+	Next clone git hub repository into ubuntu terminal
+
+* Clone to git		:	git clone https://github.com/adish-ct/project.git
+
+* Check dirctories	: 	ls
+
+* Find path 		: 	pwd
+
+* Open file		: 	nano file_name
+
+* Open the settings file and make changes 
+
+* Secrete key - database - email system -  static - razorpay
+
+* Data base 		:	DATABASES = {
+   					 'default': {
+       					 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        				 'NAME': 'myproject',
+        				 'USER': 'myprojectuser',
+        				 'PASSWORD': 'password',
+       					 'HOST': 'localhost',
+        				 'PORT': '',
+    						}
+					}
+
+* Static 		:	STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+* install requirements 	:	pip install -r requirements.txt
+
+* check installation 	:	pip freeze
+
+	Install all requirement modules
+
+* Make migrations	:	 python manage.py makemigrations
+
+* Migrate		:	python manage.py migrate
+
+* Create super user	:	python manage.py createsuperuser
+
+* Collect static	:	manage.py collectstatic  ( type yes for confirmation )
+
+* Deactivate env	:	deactivate
+
+* Creating systemd socket 	
+
+			:	sudo nano /etc/systemd/system/gunicorn.socket
+
+	code		:
+
+			 [Unit]
+			 Description=gunicorn socket
+
+			 [Socket]
+			 ListenStream=/run/gunicorn.sock
+
+			 [Install]
+			 WantedBy=sockets.target
+
+* Create open systemd socket service file
+
+			:	sudo nano /etc/systemd/system/gunicorn.service
+
+	code 		:
+			
+			
+* start gunicon		:	sudo systemctl start gunicorn.socket
+	and enable		sudo systemctl enable gunicorn.socket
+			
+* Checking gunicon 	:	sudo systemctl status gunicorn.socket 
+	status			(Ensure that the active is listening )
+
+* Check existing 
+	gunicon		:	file /run/gunicorn.sock 
+
+* Check gunicon
+	socket		:	sudo journalctl -u gunicorn.socket
+
+* Testing socket
+	activation	:	sudo systemctl status gunicorn
+				(make sure that active : inactive(dead))
+
+* Test the socket 
+	activation	:	curl --unix-socket /run/gunicorn.sock localhost
+				(html page will show )
+	
+* gunicon status	:	sudo systemctl status gunicorn
+				(make sure active : active ( running ))
+
+* gunicon check		:	sudo journalctl -u gunicorn
+				( its not mandatory , use if any error occuring in previous command)
+
+* Systemd reload	:	sudo systemctl daemon-reload
+				( optional )
+
+* Restart systemd	:	sudo systemctl restart gunicorn
+				( optional )
+
+* Configure nginx	:	sudo nano /etc/nginx/sites-available/myproject
+
+
+	code 		:	server {
+   					 listen 80;
+    					server_name server_domain_or_IP;
+
+    					location = /favicon.ico { access_log off; log_not_found off; }
+    					location /static/ {
+       					root /home/sammy/myprojectdir;
+    					}
+
+    					location / {
+        				include proxy_params;
+        				proxy_pass http://unix:/run/gunicorn.sock;
+    					}
+				}
+
+				( save and close after changing the path )
+
+* Enable the file	:	sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+
+* Test your nginx	:	sudo nginx -t
+				( syntax is ok)
+				( test is successfull )
+
+* Restart nginx		:	sudo systemctl restart nginx
+
+* Remove fire wall rule	:	sudo ufw delete allow 8000
+
+* Allow nginx to control:	sudo ufw allow 'Nginx Full'
+
