@@ -75,6 +75,8 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Deactivate env	:	deactivate
 
+	GUNICORN SETUP	
+
 * Creating systemd socket 	
 
 			:	sudo nano /etc/systemd/system/gunicorn.socket
