@@ -22,7 +22,7 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Install Virtual env	:	sudo -H pip3 install virtualenv
 
-* Create a directory	:	mkdir ~/myprojectdir
+* Create a directory	:	mkdir ~/myprojectdir ( optional )
 
 * Change directory	:	cd ~/myprojectdir
 
