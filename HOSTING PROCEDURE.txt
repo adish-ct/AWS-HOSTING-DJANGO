@@ -10,7 +10,9 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Connect with database : 	sudo -u postgres psql
 
-* Create Database 	:  	CREATE DATABASE myproject;
+				( you can use your own database credentials instead of this but you have to configure into your project settings also)
+
+* Create Database 	:  	CREATE DATABASE myproject; 
 
 * Create User 		: 	CREATE USER myprojectuser WITH PASSWORD 'password';
 
