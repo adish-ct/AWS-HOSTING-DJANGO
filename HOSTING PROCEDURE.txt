@@ -26,7 +26,7 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Change directory	:	cd ~/myprojectdir
 
-* Create Virtual env	:	virtualenv myprojectenv
+* Create Virtual env	:	virtualenv myprojectenv ( you can create env in your project after clonning)
 
 * Activate Virtual env	:	source myprojectenv/bin/activate
 
@@ -59,7 +59,7 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Static 		:	STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-* install requirements 	:	pip install -r requirements.txt
+* install requirements 	:	pip install -r requirements.txt (create requirements.txt in your local project)
 
 * check installation 	:	pip freeze
 
@@ -96,7 +96,8 @@ Copy the key from AWS and open terminal in .pem file directory
 
 			:	sudo nano /etc/systemd/system/gunicorn.service
 
-	code 		:
+	code 		: 	(you have to paste a service file code that I will provide a link in readme you can copy the code from 						there with proper syntax)
+
 			
 			
 * start gunicon		:	sudo systemctl start gunicorn.socket
