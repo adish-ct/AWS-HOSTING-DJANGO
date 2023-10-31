@@ -1,4 +1,4 @@
-HOSTING PROCEDURE 
+iHOSTING PROCEDURE 
 
 CREATE INSTANCE IN AWS
 
@@ -10,7 +10,9 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Connect with database : 	sudo -u postgres psql
 
-* Create Database 	:  	CREATE DATABASE myproject;
+				( you can use your own database credentials instead of this but you have to configure into your project settings also)
+
+* Create Database 	:  	CREATE DATABASE myproject; 
 
 * Create User 		: 	CREATE USER myprojectuser WITH PASSWORD 'password';
 
@@ -22,11 +24,15 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Install Virtual env	:	sudo -H pip3 install virtualenv
 
-* Create a directory	:	mkdir ~/myprojectdir
+* Create a directory	:	mkdir ~/myprojectdir ( optional )
 
 * Change directory	:	cd ~/myprojectdir
 
+<<<<<<< HEAD
 * Create Virtual env	:	virtualenv myprojectenv ( you can create env in your project after clonning)
+=======
+* Create Virtual env	:	virtualenv myprojectenv ( or you can create virtual env inside your project directory after cloning your project )
+>>>>>>> 6495bdad5373d65c7715ca73e063ba15b3ac1833
 
 * Activate Virtual env	:	source myprojectenv/bin/activate
 
@@ -59,7 +65,11 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Static 		:	STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+<<<<<<< HEAD
 * install requirements 	:	pip install -r requirements.txt (create requirements.txt in your local project)
+=======
+* install requirements 	:	pip install -r requirements.txt ( you have to create requirements.txt in your local project before using this command )
+>>>>>>> 6495bdad5373d65c7715ca73e063ba15b3ac1833
 
 * check installation 	:	pip freeze
 
@@ -71,7 +81,7 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Create super user	:	python manage.py createsuperuser
 
-* Collect static	:	manage.py collectstatic  ( type yes for confirmation )
+* Collect static	:	python manage.py collectstatic  ( type yes for confirmation )
 
 * Deactivate env	:	deactivate
 
@@ -96,8 +106,12 @@ Copy the key from AWS and open terminal in .pem file directory
 
 			:	sudo nano /etc/systemd/system/gunicorn.service
 
+<<<<<<< HEAD
 	code 		: 	(you have to paste a service file code that I will provide a link in readme you can copy the code from 						there with proper syntax)
 
+=======
+	code 		:       
+>>>>>>> 6495bdad5373d65c7715ca73e063ba15b3ac1833
 			
 			
 * start gunicon		:	sudo systemctl start gunicorn.socket
@@ -149,6 +163,8 @@ Copy the key from AWS and open terminal in .pem file directory
         				proxy_pass http://unix:/run/gunicorn.sock;
     					}
 				}
+
+				( set the directory of your static folder,  may be home/ubuntu/project_folder static folder should be there )
 
 				( save and close after changing the path )
 
