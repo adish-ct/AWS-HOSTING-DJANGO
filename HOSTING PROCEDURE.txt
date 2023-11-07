@@ -40,56 +40,83 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Activate Virtual env	:	source myprojectenv/bin/activate
 
+
 * Install psychopg	:	pip install django gunicorn psycopg2-binary
 
+
 	Next clone git hub repository into ubuntu terminal
+	--------------------------------------------------
 
 * Clone to git		:	git clone https://github.com/adish-ct/project.git
 
+
 * Check dirctories	: 	ls
+
 
 * Find path 		: 	pwd
 
+
 * Open file		: 	nano file_name
+
 
 * Open the settings file and make changes 
 
+
 * Secrete key - database - email system -  static - razorpay
 
+
 * Data base 		:	DATABASES = {
+
    					 'default': {
+
        					 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
         				 'NAME': 'myproject',
+
         				 'USER': 'myprojectuser',
+
         				 'PASSWORD': 'password',
+
        					 'HOST': 'localhost',
+
         				 'PORT': '',
+
     						}
 					}
 
+
 * Static 		:	STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-<<<<<<< HEAD
-* install requirements 	:	pip install -r requirements.txt (create requirements.txt in your local project)
-=======
-* install requirements 	:	pip install -r requirements.txt ( you have to create requirements.txt in your local project before using this command )
->>>>>>> 6495bdad5373d65c7715ca73e063ba15b3ac1833
+
+* install requirements 	:	pip install -r requirements.txt 	(create requirements.txt in your local project)
+
+
+* install requirements 	:	pip install -r requirements.txt 	( you have to create requirements.txt in your local project before using this command )
+
 
 * check installation 	:	pip freeze
 
+
 	Install all requirement modules
+
 
 * Make migrations	:	 python manage.py makemigrations
 
+
 * Migrate		:	python manage.py migrate
+
 
 * Create super user	:	python manage.py createsuperuser
 
+
 * Collect static	:	python manage.py collectstatic  ( type yes for confirmation )
+
 
 * Deactivate env	:	deactivate
 
+
 	GUNICORN SETUP	
+
 
 * Creating systemd socket 	
 
@@ -97,25 +124,28 @@ Copy the key from AWS and open terminal in .pem file directory
 
 	code		:
 
-			 [Unit]
-			 Description=gunicorn socket
+			 	[Unit]
+			 	Description=gunicorn socket
 
-			 [Socket]
-			 ListenStream=/run/gunicorn.sock
+			 	[Socket]
+			 	ListenStream=/run/gunicorn.sock
 
-			 [Install]
-			 WantedBy=sockets.target
+			 	[Install]
+			 	WantedBy=sockets.target
+
 
 * Create open systemd socket service file
 
+
 			:	sudo nano /etc/systemd/system/gunicorn.service
 
-<<<<<<< HEAD
-	code 		: 	(you have to paste a service file code that I will provide a link in readme you can copy the code from 						there with proper syntax)
 
-=======
-	code 		:       
->>>>>>> 6495bdad5373d65c7715ca73e063ba15b3ac1833
+	code 		: 	(you have to paste a service file code that I will provide a link in readme you can copy the code from 	there with proper syntax)
+
+	
+				
+
+
 			
 			
 * start gunicon		:	sudo systemctl start gunicorn.socket
@@ -167,6 +197,8 @@ Copy the key from AWS and open terminal in .pem file directory
         				proxy_pass http://unix:/run/gunicorn.sock;
     					}
 				}
+
+				( if you are using collect static provide the folder name instead of static, static or assets )
 
 				( set the directory of your static folder,  may be home/ubuntu/project_folder static folder should be there )
 
