@@ -28,11 +28,12 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Change directory	:	cd ~/myprojectdir
 
-<<<<<<< HEAD
+				<<<<<<< HEAD
 * Create Virtual env	:	virtualenv myprojectenv ( you can create env in your project after clonning)
-=======
+
+
 * Create Virtual env	:	virtualenv myprojectenv ( or you can create virtual env inside your project directory after cloning your project )
->>>>>>> 6495bdad5373d65c7715ca73e063ba15b3ac1833
+				
 
 * Activate Virtual env	:	source myprojectenv/bin/activate
 
