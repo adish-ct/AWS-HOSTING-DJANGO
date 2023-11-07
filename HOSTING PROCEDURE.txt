@@ -5,8 +5,9 @@ CREATE INSTANCE IN AWS
 Copy the key from AWS and open terminal in .pem file directory
 
 * Run with the key
-*	sudo apt update
-	sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
+*			:	sudo apt update
+			:	sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
+
 
 * Connect with database : 	sudo -u postgres psql
 
@@ -26,9 +27,11 @@ Copy the key from AWS and open terminal in .pem file directory
 
 * Create a directory	:	mkdir ~/myprojectdir ( optional )
 
-* Change directory	:	cd ~/myprojectdir
+* Change directory	:	cd ~/myprojectdir ( optional, instead of you can use your project clone directory )
 
-				<<<<<<< HEAD
+
+
+
 * Create Virtual env	:	virtualenv myprojectenv ( you can create env in your project after clonning)
 
 
